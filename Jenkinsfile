@@ -76,16 +76,16 @@ pipeline {
                 echo '=== STAGE: SonarQube Analysis ==='
                 withSonarQubeEnv('SonarQube') {
                     sh """
-                        mvn -pl user-service -am sonar:sonar --no-transfer-progress \
-                          -Dsonar.projectKey=${SONAR_PROJECT_KEY} \
-                          -Dsonar.projectName='${SONAR_PROJECT_NAME}' \
-                          -Dsonar.java.source=17 \
+                        mvn -pl user-service -am org.sonarsource.scanner.maven:sonar-maven-plugin:sonar --no-transfer-progress \\
+                          -Dsonar.projectKey=${SONAR_PROJECT_KEY} \\
+                          -Dsonar.projectName='${SONAR_PROJECT_NAME}' \\
+                          -Dsonar.java.source=17 \\
                           -Dsonar.coverage.jacoco.xmlReportPaths=user-service/target/site/jacoco/jacoco.xml
                     """
                 }
             }
             post {
-                always {
+                success {
                     timeout(time: 5, unit: 'MINUTES') {
                         waitForQualityGate abortPipeline: true
                     }
