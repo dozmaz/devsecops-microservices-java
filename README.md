@@ -2,6 +2,8 @@
 
 Pipeline de integración y entrega continua para una aplicación Spring Boot microservicios.
 
+> 📖 Para la guía completa de configuración del entorno, ver [CONFIGURACION.md](CONFIGURACION.md)
+
 ---
 
 ## Herramientas configuradas en Jenkins
