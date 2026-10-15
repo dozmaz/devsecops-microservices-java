@@ -26,8 +26,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 deleteDir()
-                // Reemplaza con la URL de tu repositorio
-                sh 'git -c http.sslVerify=false clone https://github.com/dozmaz/devsecops-microservices-java.git'
+                sh 'git -c http.sslVerify=false clone https://github.com/dozmaz/devsecops-microservices-java.git .'
             }
         }
 
